@@ -1,6 +1,5 @@
 import Foundation
 
-
 public struct GCounter<ReplicaID: Hashable> {
     public private(set) var counter: [ReplicaID: Int]
     public var value: Int { counter.reduce(0) { $0 + $1.value } }
@@ -177,7 +176,6 @@ extension Date {
     var vtime: Int { Int(timeIntervalSince1970 * 1000) }
 }
 
-
 /// Add Win Observed Set
 public struct ORSet<Element: Hashable, ReplicaID: Hashable> {
     public private(set) var additions: [Element: VClock<ReplicaID>]
@@ -229,7 +227,8 @@ public struct ORSet<Element: Hashable, ReplicaID: Hashable> {
         var rem: [Element: VClock<ReplicaID>] = [:]
         for (element, clockRem) in allRem {
             if let clockAdd = add[element],
-                clockAdd.compare(clockRem) == .lessThan {
+               clockAdd.compare(clockRem) == .lessThan
+            {
                 add[element] = nil
                 rem[element] = clockRem
             }
