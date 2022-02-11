@@ -8,5 +8,8 @@
       <FileRef
          location = "container:State-based">
       </FileRef>
+      <FileRef
+         location = "container:Delta">
+      </FileRef>
    </Group>
 </Workspace>
